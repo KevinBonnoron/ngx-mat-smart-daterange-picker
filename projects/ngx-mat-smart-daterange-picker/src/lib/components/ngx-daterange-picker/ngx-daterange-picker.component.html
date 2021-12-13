@@ -1,0 +1,10 @@
+<form [formGroup]="formGroup">
+  <mat-form-field style="width: 100%">
+    <mat-date-range-input [min]="min" [max]="max" [rangePicker]="picker" style="display: none">
+      <input matStartDate formControlName="from" dateFormat="yyyy-MM-dd" (dateChange)="onFromDateChange()" />
+      <input matEndDate formControlName="to" dateFormat="yyyy-MM-dd" (dateChange)="onToDateChange($event)" />
+    </mat-date-range-input>
+
+    <ngx-mat-date-range-picker #picker [opened]="true"></ngx-mat-date-range-picker>
+  </mat-form-field>
+</form>

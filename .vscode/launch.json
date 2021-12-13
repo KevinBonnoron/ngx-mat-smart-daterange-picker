@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Jest Tests",
+      "request": "launch",
+      "runtimeArgs": [
+        "run-script",
+        "test",
+        "--testNamePattern ${relativeFileDirname}/${fileBasenameNoExtension}",
+        "--runInBand",
+        "--no-cache",
+        "--watchAll"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    }
+  ]
+}

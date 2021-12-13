@@ -1,0 +1,16 @@
+<div>
+  <h3>{{ 'relativeTimeRange' | translate }}</h3>
+
+  <mat-selection-list
+    #list
+    [multiple]="false"
+    (selectionChange)="onSelectionChanged(list.selectedOptions.selected[0]?.value)"
+  >
+    <mat-list-option
+      *ngFor="let relativeTimeRange of relativeTimeRanges"
+      [value]="relativeTimeRange"
+    >
+      {{ relativeTimeRange.label | translate }}
+    </mat-list-option>
+  </mat-selection-list>
+</div>

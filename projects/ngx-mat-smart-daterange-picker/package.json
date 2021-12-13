@@ -1,0 +1,20 @@
+{
+  "name": "ngx-mat-smart-daterange-picker",
+  "description": "Angular Material custom daterange picker",
+  "version": "0.0.1",
+  "publishConfig": {},
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/KevinBonnoron/ngx-mat-smart-daterange-picker"
+  },
+  "peerDependencies": {
+    "@angular/cdk": "^13.0.0",
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0",
+    "@angular/material": "^13.0.0",
+    "ngx-mat-popover": "0.0.7"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

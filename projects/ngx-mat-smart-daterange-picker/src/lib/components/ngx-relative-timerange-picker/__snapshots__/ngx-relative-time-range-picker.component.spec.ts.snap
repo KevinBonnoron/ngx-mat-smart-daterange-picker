@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NgxRelativeTimeRangePickerComponent should have the expected render 1`] = `
+<mock-render
+  __ngContext__={[Function LRootView]}
+>
+  <ngx-relative-timerange-picker>
+    <div>
+      <h3>
+      </h3>
+      <mat-selection-list>
+      </mat-selection-list>
+    </div>
+  </ngx-relative-timerange-picker>
+</mock-render>
+`;

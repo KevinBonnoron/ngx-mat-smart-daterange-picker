@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateTimePickerComponent should have the expected render 1`] = `
+<mock-render
+  __ngContext__={[Function LRootView]}
+>
+  <ngx-mat-smart-daterange-picker
+    class="floating"
+    id="smart-date-time-picker-1"
+  >
+    <div>
+      <ngx-mat-popover>
+        <button
+          mat-button=""
+          mat-raised-button=""
+        >
+          <mat-icon>
+            schedule
+          </mat-icon>
+           2020-01-01 00:00:00 - 2020-01-01 00:00:00 
+        </button>
+      </ngx-mat-popover>
+    </div>
+  </ngx-mat-smart-daterange-picker>
+</mock-render>
+`;

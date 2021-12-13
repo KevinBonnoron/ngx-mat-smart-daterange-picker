@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NgxRecentlyUsedTimeRangeComponent should have the expected render 1`] = `
+<mock-render
+  __ngContext__={[Function LRootView]}
+>
+  <ngx-recently-used-time-range>
+    <div>
+      <h3>
+      </h3>
+      <mat-selection-list>
+      </mat-selection-list>
+    </div>
+  </ngx-recently-used-time-range>
+</mock-render>
+`;

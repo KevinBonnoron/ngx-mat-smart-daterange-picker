@@ -1,0 +1,24 @@
+<div>
+  <h3>{{ 'absoluteTimeRange' | translate }}</h3>
+
+  <form [formGroup]="formGroup" autocomplete="off">
+    <div fxLayout="column">
+      <mat-form-field>
+        <mat-label>{{ 'from' | translate }}</mat-label>
+        <input matInput formControlName="from" (focus)="pickerVisible = true" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ 'to' | translate }}</mat-label>
+        <input matInput formControlName="to" (focus)="pickerVisible = true" />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!formGroup.valid"
+        (click)="applyTimeRange(this.formGroup.value)"
+      >
+        {{ 'applyTimeRange' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

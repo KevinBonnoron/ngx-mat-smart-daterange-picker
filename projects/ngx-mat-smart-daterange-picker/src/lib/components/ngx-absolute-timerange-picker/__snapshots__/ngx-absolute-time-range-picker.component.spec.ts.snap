@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NgxAbsoluteTimeRangePickerComponent should have the expected render 1`] = `
+<mock-render
+  __ngContext__={[Function LRootView]}
+>
+  <ngx-absolute-timerange-picker>
+    <div>
+      <h3>
+      </h3>
+      <form
+        autocomplete="off"
+        class="ng-untouched ng-pristine ng-invalid"
+        novalidate=""
+      >
+        <div
+          fxlayout="column"
+        >
+          <mat-form-field>
+            <mat-label>
+            </mat-label>
+            <input
+              class="ng-untouched ng-pristine ng-invalid"
+              formcontrolname="from"
+              matinput=""
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>
+            </mat-label>
+            <input
+              class="ng-untouched ng-pristine ng-invalid"
+              formcontrolname="to"
+              matinput=""
+            />
+          </mat-form-field>
+          <button
+            color="primary"
+            mat-raised-button=""
+          >
+          </button>
+        </div>
+      </form>
+    </div>
+  </ngx-absolute-timerange-picker>
+</mock-render>
+`;

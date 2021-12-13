@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NgxDateRangePickerComponent should have the expected render 1`] = `
+<mock-render
+  __ngContext__={[Function LRootView]}
+>
+  <ngx-daterange-picker>
+    <form
+      class="ng-untouched ng-pristine ng-invalid"
+      novalidate=""
+    >
+      <mat-form-field
+        style="width: 100%;"
+      >
+        <mat-date-range-input
+          style="display: none;"
+        >
+          <input
+            class="ng-untouched ng-pristine ng-invalid"
+            dateformat="yyyy-MM-dd"
+            formcontrolname="from"
+            matstartdate=""
+          />
+          <input
+            class="ng-untouched ng-pristine ng-invalid"
+            dateformat="yyyy-MM-dd"
+            formcontrolname="to"
+            matenddate=""
+          />
+        </mat-date-range-input>
+        <ngx-mat-date-range-picker />
+      </mat-form-field>
+    </form>
+  </ngx-daterange-picker>
+</mock-render>
+`;

@@ -1,0 +1,29 @@
+<div>
+  <ng-template #popoverContent>
+    <div fxFlex="row" style="width: 1100px">
+      <div fxFlex="20" fxFlex="1 1 80%">
+        <ngx-daterange-picker [value]="value" [min]="min" [max]="max" [maxRange]="maxRange"
+          (valueChange)="dateRangePickerChange($event)">
+        </ngx-daterange-picker>
+      </div>
+      <div fxFlex="30" fxFlexOffset="5" fxFlex="column">
+        <ngx-absolute-timerange-picker [value]="value" [min]="min" [max]="max"
+          (valueChanged)="absoluteTimeRangeChange($event)">
+        </ngx-absolute-timerange-picker>
+        <ngx-recently-used-time-range [dateRanges]="recentlyUsedTimeRanges"
+          (selectionChange)="recentlyUsedTimeRangeChange($event)"></ngx-recently-used-time-range>
+      </div>
+      <div fxFlex="1 0 auto" fxFlexOffset="5" class="left-separator">
+        <ngx-relative-timerange-picker [relativeTimeRanges]="relativeTimeRanges"
+          (selectionChange)="relativeTimeRangeChange($event)">
+        </ngx-relative-timerange-picker>
+      </div>
+    </div>
+  </ng-template>
+
+  <ngx-mat-popover [popoverContent]="popoverContent" [xPosition]="'after'" [yPosition]="'below'">
+    <button mat-raised-button mat-button [disabled]="disabled">
+      <mat-icon>schedule</mat-icon>&nbsp;{{ timeRangeLabel }}
+    </button>
+  </ngx-mat-popover>
+</div>

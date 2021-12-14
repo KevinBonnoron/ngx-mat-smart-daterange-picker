@@ -4,8 +4,8 @@ import { formatDateRange } from '../../utils';
 
 @Component({
   selector: 'ngx-recently-used-time-range',
-  templateUrl: './ngx-recently-used-time-range.component.html',
-  styleUrls: ['./ngx-recently-used-time-range.component.scss']
+  templateUrl: './ngx-recently-used-timerange.component.html',
+  styleUrls: ['./ngx-recently-used-timerange.component.scss']
 })
 export class NgxRecentlyUsedTimeRangeComponent {
   @Input()

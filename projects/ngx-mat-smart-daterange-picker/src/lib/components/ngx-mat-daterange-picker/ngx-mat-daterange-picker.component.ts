@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { DateRange, MatDatepickerContent, MatDateRangePicker } from '@angular/material/datepicker';
 
-// TODO handle opened state
 @Component({
   selector: 'ngx-mat-date-range-picker',
   template: '<mat-datepicker-content></mat-datepicker-content>'

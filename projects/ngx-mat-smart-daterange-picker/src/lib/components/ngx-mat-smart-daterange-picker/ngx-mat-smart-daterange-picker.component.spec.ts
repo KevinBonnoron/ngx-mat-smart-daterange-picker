@@ -1,9 +1,9 @@
 import { MockBuilder, MockRenderFactory, ngMocks } from 'ng-mocks';
 import { NgxSmartDateRangePickerModule } from '../../ngx-mat-smart-daterange-picker.module';
-import { NgxSmartDateRangePickerComponent } from './ngx-mat-smart-daterange-picker.component';
+import { NgxMatSmartDateRangePickerComponent } from './ngx-mat-smart-daterange-picker.component';
 
-describe('DateTimePickerComponent', () => {
-  const factory = MockRenderFactory(NgxSmartDateRangePickerComponent, ['value']);
+describe('NgxMatSmartDateRangePickerComponent', () => {
+  const factory = MockRenderFactory(NgxMatSmartDateRangePickerComponent, ['value']);
   const initValues = {
     value: {
       from: new Date('2020-01-01T00:00:00Z'),
@@ -13,7 +13,7 @@ describe('DateTimePickerComponent', () => {
 
   ngMocks.faster();
 
-  beforeAll(() => MockBuilder(NgxSmartDateRangePickerComponent, NgxSmartDateRangePickerModule));
+  beforeAll(() => MockBuilder(NgxMatSmartDateRangePickerComponent, NgxSmartDateRangePickerModule));
   beforeAll(() => factory.configureTestBed());
 
   it('should create', () => {

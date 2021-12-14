@@ -16,7 +16,9 @@ import * as fr from '../translate/messages.fr.json';
 import {
   NgxAbsoluteTimeRangePickerComponent,
   NgxDateRangePickerComponent,
-  NgxMatDateRangePicker, NgxMatSmartDateRangePickerComponent, NgxRecentlyUsedTimeRangeComponent,
+  NgxMatDateRangePicker,
+  NgxMatSmartDateRangePickerComponent,
+  NgxRecentlyUsedTimeRangeComponent,
   NgxRelativeTimeRangePickerComponent
 } from './components';
 import { RELATIVE_TIME_RANGE_TOKEN } from './tokens';

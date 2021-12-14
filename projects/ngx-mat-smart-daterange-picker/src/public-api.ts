@@ -8,4 +8,3 @@ export * from './lib/components/ngx-relative-timerange-picker/ngx-relative-timer
 export * from './lib/ngx-mat-smart-daterange-picker.module';
 export * from './lib/tokens';
 export * from './lib/types';
-

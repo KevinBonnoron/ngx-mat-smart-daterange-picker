@@ -2,7 +2,7 @@ import { LOCALE_ID } from '@angular/core';
 import { MockBuilder, MockRenderFactory, ngMocks } from 'ng-mocks';
 import { NgxSmartDateRangePickerModule } from '../../ngx-mat-smart-daterange-picker.module';
 import { Queue } from '../../types';
-import { NgxRecentlyUsedTimeRangeComponent } from './ngx-recently-used-time-range.component';
+import { NgxRecentlyUsedTimeRangeComponent } from './ngx-recently-used-timerange.component';
 
 describe('NgxRecentlyUsedTimeRangeComponent', () => {
   const factory = MockRenderFactory(NgxRecentlyUsedTimeRangeComponent, ['dateRanges']);

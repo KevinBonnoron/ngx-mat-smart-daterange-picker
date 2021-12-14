@@ -17,15 +17,15 @@ NgxSmartDateRangePickerModule.forRoot({
 And use it in your component :
 ##### app.component.ts
 ```ts
-readonly start = new Date(2020, 0, 1);
-readonly today = new Date();
+start = new Date(2020, 0, 1);
+today = new Date();
 
-readonly maxRange = 10; // 10 days of max period (put 0 for unlimited)
+maxRange = 10; // limit selection range to 10 days (0 for unlimited)
 ```
 
 ##### app.component.html
 ```html
-<ngx-mat-smart-daterange-picker [min]="start" [max]="today" [maxRange]="maxRange" [recentlyUsedTimeRangeCount]="2">
+<ngx-mat-smart-daterange-picker [min]="start" [max]="today" [maxRange]="maxRange">
 </ngx-mat-smart-daterange-picker>
 ```
 
@@ -59,6 +59,16 @@ readonly relativeTimeRanges: RelativeTimeRange[] = [
 ```
 #### app.component.html
 ```html
-  <ngx-mat-smart-daterange-picker [min]="start" [max]="today" [maxRange]="maxRange" [recentlyUsedTimeRangeCount]="2" [relativeTimeRanges]="relativeTimeRanges">
+  <ngx-mat-smart-daterange-picker [min]="start" [max]="today" [maxRange]="maxRange" [relativeTimeRanges]="relativeTimeRanges">
   </ngx-mat-smart-daterange-picker>
 ```
+
+## API
+### NgxMatSmartDateRangePickerComponent
+| Name                                             | Description                                                                   |
+| ------------------------------------------------ | ----------------------------------------------------------------------------- |
+| @Input() min: Date                               | Minimum date that can be selected in picker (default: undefined)              |
+| @Input() max: Date                               | Maximum date that can be selected in picker (default: undefined)              |
+| @Input() maxRange: number                        | Number of day that user can select in picker (default: 0)                     |
+| @Input() recentlyUsedTimeRangeCount: number      | Number of date the component keep in the _recently used_ section (default: 4) |
+| @Input() relativeTimeRanges: RelativeTimeRange[] | Dates that can be shown in the _relative time range_ section                  |

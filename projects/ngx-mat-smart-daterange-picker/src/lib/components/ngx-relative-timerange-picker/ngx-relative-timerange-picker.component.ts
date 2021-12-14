@@ -18,7 +18,7 @@ export class NgxRelativeTimeRangePickerComponent implements OnInit {
   constructor(
     @Inject(RELATIVE_TIME_RANGE_TOKEN)
     readonly defaultRelativeTimeRanges: RelativeTimeRange[]
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (this.relativeTimeRanges === undefined) {

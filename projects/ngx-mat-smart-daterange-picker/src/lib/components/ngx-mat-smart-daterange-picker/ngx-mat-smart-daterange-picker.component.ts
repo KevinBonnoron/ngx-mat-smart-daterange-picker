@@ -31,7 +31,8 @@ import { formatDateRange, isDateRangeEquals } from '../../utils';
   exportAs: 'ngxSmartDateRangePicker'
 })
 export class NgxMatSmartDateRangePickerComponent
-  implements OnInit, OnDestroy, MatFormFieldControl<DateRange>, ControlValueAccessor {
+  implements OnInit, OnDestroy, MatFormFieldControl<DateRange>, ControlValueAccessor
+{
   static nextId = 0;
 
   @ViewChild(NgxMatPopoverComponent, { static: true })
@@ -53,16 +54,16 @@ export class NgxMatSmartDateRangePickerComponent
   relativeTimeRanges: RelativeTimeRange[] | undefined = undefined;
 
   @HostBinding()
-  id = `smart-date-time-picker-${NgxMatSmartDateRangePickerComponent.nextId++}`;
+  id = `mat-smart-datetime-picker-${NgxMatSmartDateRangePickerComponent.nextId++}`;
   stateChanges = new Subject<void>();
   private _value!: DateRange;
   private _placeholder: string = '';
   private _focused: boolean = false;
   private _required: boolean = false;
   private _disabled = false;
-  private onChange: (_: any) => void = () => { };
-  private onTouched = () => { };
-  controlType = 'smart-date-time-picker';
+  private onChange: (_: any) => void = () => {};
+  private onTouched = () => {};
+  controlType = 'mat-smart-datetime-picker';
   autofilled?: boolean | undefined;
   userAriaDescribedBy?: string | undefined;
   recentlyUsedTimeRanges!: Queue<DateRange>;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateTimePickerComponent should have the expected render 1`] = `
+exports[`NgxMatSmartDateRangePickerComponent should have the expected render 1`] = `
 <mock-render
   __ngContext__={[Function LRootView]}
 >

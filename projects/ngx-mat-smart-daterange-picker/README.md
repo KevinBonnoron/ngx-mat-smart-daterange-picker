@@ -1,25 +1,98 @@
 # NgxMatSmartDateTimePicker
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+This library add a component to select a date range _à la_ Grafana. You can pick date with the picker, use pre-defined periods or select date manualy.
 
-## Code scaffolding
+![screenshot](screenshot.png 'Example')
 
-Run `ng generate component component-name --project ngx-mat-smart-daterange-picker` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-mat-smart-daterange-picker`.
+## Get started
 
-> Note: Don't forget to add `--project ngx-mat-smart-daterange-picker` or else it will be added to the default project in your `angular.json` file.
+Install the lib
 
-## Build
+```shell
+npm install ngx-smart-daterange-picker
+```
 
-Run `ng build ngx-mat-smart-daterange-picker` to build the project. The build artifacts will be stored in the `dist/` directory.
+Then import the module somewhere in your application :
 
-## Publishing
+##### app.module.ts
 
-After building your library with `ng build ngx-mat-smart-daterange-picker`, go to the dist folder `cd dist/ngx-mat-smart-daterange-picker` and run `npm publish`.
+```typescript
+NgxSmartDateRangePickerModule.forRoot({
+  lang: 'en-US' // available locales are en-GB, en-US, fr-BE, fr-CA, fr-FR
+});
+```
 
-## Running unit tests
+And use it in your component :
 
-Run `ng test ngx-mat-smart-daterange-picker` to execute the unit tests via [Karma](https://karma-runner.github.io).
+##### app.component.ts
 
-## Further help
+```ts
+start = new Date(2020, 0, 1);
+today = new Date();
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+maxRange = 10; // limit selection range to 10 days (0 for unlimited)
+```
+
+##### app.component.html
+
+```html
+<ngx-mat-smart-daterange-picker [min]="start" [max]="today" [maxRange]="maxRange"> </ngx-mat-smart-daterange-picker>
+```
+
+## Options
+
+You can define relative time range periods globally when importing module
+
+##### app.module.ts
+
+```typescript
+const relativeTimeRanges: RelativeTimeRange[] = [
+  { label: 'last5Minutes', from: 'now-5m', to: 'now' },
+  { label: 'last15Minutes', from: 'now-15m', to: 'now' },
+  { label: 'last30Minutes', from: 'now-30m', to: 'now' },
+  { label: 'todaySoFar', from: 'now/d', to: 'now' }
+];
+
+NgxSmartDateRangePickerModule.forRoot({
+  relativeTimeRanges,
+  lang: 'en-US'
+});
+```
+
+Or you can define it when using the component :
+
+##### app.component.ts
+
+```typescript
+// Overload default configuration
+readonly relativeTimeRanges: RelativeTimeRange[] = [
+  { label: 'last5Minutes', from: 'now-5m', to: 'now' },
+  { label: 'last15Minutes', from: 'now-15m', to: 'now' },
+  { label: 'last30Minutes', from: 'now-30m', to: 'now' },
+  { label: 'todaySoFar', from: 'now/d', to: 'now' }
+];
+```
+
+#### app.component.html
+
+```html
+<ngx-mat-smart-daterange-picker
+  [min]="start"
+  [max]="today"
+  [maxRange]="maxRange"
+  [relativeTimeRanges]="relativeTimeRanges"
+>
+</ngx-mat-smart-daterange-picker>
+```
+
+## API
+
+### NgxMatSmartDateRangePickerComponent
+
+| Name                                             | Description                                                                           |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| @Input() min: Date                               | Minimum date that can be selected in picker (default: undefined)                      |
+| @Input() max: Date                               | Maximum date that can be selected in picker (default: undefined)                      |
+| @Input() maxRange: number                        | Number of day that user can select in picker (default: 0)                             |
+| @Input() recentlyUsedTimeRangeCount: number      | Number of date the component keep in the _recently used_ section (default: 4)         |
+| @Input() relativeTimeRanges: RelativeTimeRange[] | Dates that can be shown in the _relative time range_ section (default: lot's of dates |

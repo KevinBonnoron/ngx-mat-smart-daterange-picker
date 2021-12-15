@@ -34,8 +34,8 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ngx-mat-smart-daterange-picker/**/*.ts",
-              "projects/ngx-mat-smart-daterange-picker/**/*.html"
+              "projects/**/*.ts",
+              "projects/**/*.html"
             ]
           }
         }

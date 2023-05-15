@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
+import { FormBuilder, FormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import {
-  MatDatepickerInputEvent,
+  MAT_DATE_RANGE_SELECTION_STRATEGY,
   MatDateSelectionModel,
-  MatRangeDateSelectionModel,
-  MAT_DATE_RANGE_SELECTION_STRATEGY
+  MatDatepickerInputEvent,
+  MatRangeDateSelectionModel
 } from '@angular/material/datepicker';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { debounceTime, filter } from 'rxjs/operators';
@@ -28,6 +28,9 @@ import { CustomRangeSelectionStrategy } from './custom-range.selection-strategy'
 })
 @UntilDestroy()
 export class NgxDateRangePickerComponent implements OnInit, OnChanges {
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly rangeSelectionStrategy = inject(MAT_DATE_RANGE_SELECTION_STRATEGY);
+
   @Input()
   value!: DateRange;
 
@@ -43,18 +46,10 @@ export class NgxDateRangePickerComponent implements OnInit, OnChanges {
   @Output()
   readonly valueChange = new EventEmitter<DateRange>();
 
-  readonly formGroup: FormGroup;
-
-  constructor(
-    private readonly formBuilder: FormBuilder,
-    @Inject(MAT_DATE_RANGE_SELECTION_STRATEGY)
-    private readonly rangeSelectionStrategy: CustomRangeSelectionStrategy<any>
-  ) {
-    this.formGroup = this.formBuilder.group({
-      from: [null, Validators.required],
-      to: [null, Validators.required]
-    });
-  }
+  readonly formGroup: FormGroup = this.formBuilder.group({
+    from: [null, Validators.required],
+    to: [null, Validators.required]
+  });
 
   ngOnInit(): void {
     this.formGroup.valueChanges
@@ -75,7 +70,7 @@ export class NgxDateRangePickerComponent implements OnInit, OnChanges {
     }
 
     if (changes['maxRange']) {
-      this.rangeSelectionStrategy.maxRange = this.maxRange;
+      (this.rangeSelectionStrategy as CustomRangeSelectionStrategy<any>).maxRange = this.maxRange;
     }
   }
 
@@ -91,11 +86,11 @@ export class NgxDateRangePickerComponent implements OnInit, OnChanges {
     }
   }
 
-  get from(): FormControl {
-    return this.formGroup.get('from') as FormControl;
+  get from(): UntypedFormControl {
+    return this.formGroup.get('from') as UntypedFormControl;
   }
 
-  get to(): FormControl {
-    return this.formGroup.get('to') as FormControl;
+  get to(): UntypedFormControl {
+    return this.formGroup.get('to') as UntypedFormControl;
   }
 }

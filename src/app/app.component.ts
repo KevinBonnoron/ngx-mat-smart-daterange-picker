@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { RelativeTimeRange } from 'ngx-mat-smart-daterange-picker';
 
 @Component({
@@ -7,7 +7,7 @@ import { RelativeTimeRange } from 'ngx-mat-smart-daterange-picker';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  readonly formGroup: FormGroup;
+  readonly formGroup: UntypedFormGroup;
 
   readonly start = new Date(2020, 0, 1);
   readonly today = new Date();
@@ -22,7 +22,7 @@ export class AppComponent {
 
   maxRange = 0;
 
-  constructor(private readonly formBuilder: FormBuilder) {
+  constructor(private readonly formBuilder: UntypedFormBuilder) {
     this.formGroup = this.formBuilder.group({
       dateRange: [null]
     });

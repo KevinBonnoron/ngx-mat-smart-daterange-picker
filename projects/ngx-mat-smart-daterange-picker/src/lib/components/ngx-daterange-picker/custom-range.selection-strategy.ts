@@ -6,14 +6,14 @@ import { DateRange, MatDateRangeSelectionStrategy } from '@angular/material/date
 export class CustomRangeSelectionStrategy<D> implements MatDateRangeSelectionStrategy<D> {
   private _maxRange = 0;
 
-  constructor(private readonly dateAdapter: DateAdapter<D>) {}
+  constructor(private readonly dateAdapter: DateAdapter<D>) { }
 
   selectionFinished(date: D, currentRange: DateRange<D>) {
     let { start, end } = currentRange;
-    if (start === null || (start && end)) {
+    if (!start || (start && end)) {
       start = date;
       end = null;
-    } else if (end === null && date !== undefined) {
+    } else if (!end && date) {
       const maxDate = this.dateAdapter.addCalendarDays(start, this._maxRange);
       const minDate = this.dateAdapter.addCalendarDays(start, -this._maxRange);
       if (date < start && (this._maxRange === 0 || date >= minDate)) {
@@ -36,7 +36,7 @@ export class CustomRangeSelectionStrategy<D> implements MatDateRangeSelectionStr
       let rangeStart = null;
       let rangeEnd = null;
 
-      if (activeDate !== null) {
+      if (activeDate) {
         if (activeDate < currentRange.start) {
           rangeStart = this._maxRange !== 0 && activeDate < minDate ? minDate : activeDate;
           rangeEnd = currentRange.start;

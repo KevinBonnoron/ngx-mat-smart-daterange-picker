@@ -1,8 +1,8 @@
 import { formatDate } from '@angular/common';
-import { Component, EventEmitter, Inject, Input, LOCALE_ID, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, LOCALE_ID, OnChanges, Output, SimpleChanges, inject } from '@angular/core';
+import { FormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { DateRange } from '../../types';
-import { convertStringToDate, RELATIVE_TIME_REGEX } from '../../utils';
+import { RELATIVE_TIME_REGEX, convertStringToDate } from '../../utils';
 
 export interface AbsoluteTimeRange {
   from: string;
@@ -14,7 +14,8 @@ export interface AbsoluteTimeRange {
   templateUrl: './ngx-absolute-timerange-picker.component.html'
 })
 export class NgxAbsoluteTimeRangePickerComponent implements OnChanges {
-  readonly formGroup: FormGroup;
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly locale = inject(LOCALE_ID);
 
   @Input()
   value!: DateRange;
@@ -28,14 +29,12 @@ export class NgxAbsoluteTimeRangePickerComponent implements OnChanges {
   @Output()
   readonly valueChanged = new EventEmitter<DateRange>();
 
-  pickerVisible = true;
+  readonly formGroup = this.formBuilder.nonNullable.group({
+    from: ['', [Validators.required, periodValidator()]],
+    to: ['', [Validators.required, periodValidator()]]
+  });
 
-  constructor(private readonly formBuilder: FormBuilder, @Inject(LOCALE_ID) private readonly locale: string) {
-    this.formGroup = this.formBuilder.group({
-      from: ['', [Validators.required, periodValidator()]],
-      to: ['', [Validators.required, periodValidator()]]
-    });
-  }
+  pickerVisible = true;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['value']) {
@@ -62,7 +61,11 @@ export class NgxAbsoluteTimeRangePickerComponent implements OnChanges {
     }
   }
 
-  applyTimeRange(absoluteTimeRange: AbsoluteTimeRange): void {
+  applyTimeRange(absoluteTimeRange: Partial<AbsoluteTimeRange>): void {
+    if (!absoluteTimeRange.from || !absoluteTimeRange.to) {
+      return;
+    }
+
     this.valueChanged.emit({
       from: convertStringToDate(absoluteTimeRange.from, 'from'),
       to: convertStringToDate(absoluteTimeRange.to, 'to')
